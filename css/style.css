@@ -11,14 +11,80 @@ body{
     position: fixed;
     width: 100%;
     height: 100vh;
-    background-color: aquamarine;
+    background-color: var(--secondary-color);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .character-container{
+    position: relative;
     width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.face-container{
+    position: relative;
+    width: 300px;
+    padding-bottom: 4px;
+}
+.face{
+    position: relative;
+    width: 240px;
+    height: 128px;
+    background-color: var(--primary--color);
+    border-radius: 120px 120px 12px 12px;
+    margin: 0 auto;
+    z-index: 999;
+}
+
+.eyes{
+    position: absolute;
+    bottom: 24px;
+    left: 40px;
+    display: flex;
+    width: 116px;
+    justify-content: space-between;
+    transform: rotate(-6deg);
+}
+.eye{
+    position: relative;
+    width: 44px;
+    height: 44px;
+    background-color: var(--secondary-color);
+    border-radius: 22px;
+
+    animation: 5s linear infinite eyes-blink;
+
+    &::after{
+        content: "";
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 32px;
+        height: 32px;
+        background-color: var(--primary--color);
+        border-radius: 16px;
+    }
+}
+
+.hand{
+    position: absolute;
+    width: 64px;
+    height: 48px;
+    border-radius: 100%;
+    background-color: var(--primary--color);
+    border: 4px solid var(--secondary-color);
+    z-index: 998;
+}
+.right-hand{
+    bottom: -20px;
+    left: 44px;
+}
+.left-hand{
+    bottom: -20px;
+    left: 160px;
 }
 
 .hourglass-container{
@@ -233,5 +299,44 @@ body{
     }
     100% {
         scale: 1 1;
+    }
+}
+
+
+/* だんだん遅く */
+/* 下の砂のスケールを変えるキーフレーム */
+@keyframes eyes-blink {
+    0% {
+        scale: 1;
+    }
+    20% {
+        scale: 1;
+    }
+    21%{
+        scale: 1 0;
+    }
+    22%{
+        scale: 1;
+    }
+    60% {
+        scale: 1;
+    }
+    61%{
+        scale: 1 0;
+    }
+    62%{
+        scale: 1;
+    }
+    66% {
+        scale: 1;
+    }
+    67%{
+        scale: 1 0;
+    }
+    68%{
+        scale: 1;
+    }
+    100% {
+        scale: 1;
     }
 }
